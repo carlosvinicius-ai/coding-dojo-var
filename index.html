@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TACTICAL INTELLIGENCE | Professional Analysis</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;700&amp;family=Geist:wght@600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#38374f",
+                        "on-secondary-fixed-variant": "#384e00",
+                        "outline": "#85967c",
+                        "secondary-container": "#384e00",
+                        "data-error": "#FF4B4B",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "secondary-fixed": "#d1ed91",
+                        "surface-dim": "#121127",
+                        "on-tertiary": "#2f3131",
+                        "on-primary-fixed": "#022100",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#0c0b21",
+                        "on-primary": "#053900",
+                        "surface-container-highest": "#33324a",
+                        "on-secondary-fixed": "#141f00",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "primary-fixed-dim": "#2ae500",
+                        "on-surface": "#e3dffe",
+                        "error-container": "#93000a",
+                        "primary-fixed": "#79ff5b",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#e3dffe",
+                        "primary": "#efffe3",
+                        "on-secondary-container": "#a4bf68",
+                        "tertiary-fixed": "#e2e2e2",
+                        "secondary-fixed-dim": "#b5d178",
+                        "neon-glow": "rgba(57, 255, 20, 0.3)",
+                        "on-primary-container": "#107100",
+                        "on-background": "#e3dffe",
+                        "pitch-green": "#2E3325",
+                        "on-tertiary-container": "#606162",
+                        "background": "#121127",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "surface-variant": "#33324a",
+                        "primary-container": "#39ff14",
+                        "surface-charcoal": "#161B22",
+                        "inverse-primary": "#106e00",
+                        "outline-variant": "#3c4b35",
+                        "on-primary-fixed-variant": "#095300",
+                        "surface-tint": "#2ae500",
+                        "tertiary": "#f9fafa",
+                        "surface-container": "#1e1d34",
+                        "inverse-on-surface": "#2f2e46",
+                        "on-secondary": "#263500",
+                        "on-surface-variant": "#baccb0",
+                        "tertiary-container": "#dddddd",
+                        "surface-container-high": "#29283f",
+                        "secondary": "#b5d178",
+                        "surface": "#121127",
+                        "surface-container-low": "#1a1930"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "margin-edge": "24px",
+                        "container-max-width": "1440px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Geist"],
+                        "metric-xl": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-lg": ["Geist"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "metric-xl": ["40px", { "lineHeight": "40px", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .pitch-pattern {
+            background: repeating-linear-gradient(
+                90deg,
+                #3d8c45 0%,
+                #3d8c45 9%,
+                #4aa055 9%,
+                #4aa055 10%,
+                #3d8c45 10%
+            );
+        }
+
+        .glass-panel {
+            background: rgba(22, 27, 34, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .neon-border-glow {
+            box-shadow: 0 0 12px rgba(57, 255, 20, 0.2);
+        }
+
+        .player-marker {
+            transition: transform 0.1s ease-out;
+            cursor: grab;
+        }
+
+        .player-marker:active {
+            cursor: grabbing;
+            filter: brightness(1.2);
+        }
+
+        .active-glow {
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+        }
+
+        @keyframes flow {
+            to {
+                stroke-dashoffset: -20;
+            }
+        }
+
+        .animate-flow {
+            stroke-dasharray: 10, 10;
+            animation: flow 1s linear infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-surface-container-lowest text-on-surface font-body-md overflow-hidden h-screen flex flex-col">
+    <!-- TopNavBar -->
+    <header
+        class="flex justify-between items-center w-full px-margin-edge h-16 z-50 bg-surface-dim border-b border-outline-variant fixed top-0">
+        <div class="flex items-center gap-8">
+            <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary-container text-2xl">gavel</span>
+                <span class="font-headline-md text-headline-md font-bold text-primary-container tracking-tighter">SISTEMA VAR</span>
+            </div>
+            <div class="hidden md:flex items-center gap-2 glass-panel px-3 py-1 rounded-full border border-primary-container/20">
+                <div class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></div>
+                <span class="font-label-caps text-label-caps text-on-surface-variant">ANÁLISE DE IMPEDIMENTO</span>
+            </div>
+        </div>
+        </div>
+    </header>
+    <div class="flex flex-1 pt-16 h-full">
+        <!-- SideNavBar -->
+        <aside
+            class="flex flex-col h-full w-64 bg-surface-container shadow-md border-r border-outline-variant py-gutter px-4 space-y-4">
+            <div class="mb-4">
+                <h2 class="font-headline-md text-headline-md text-primary-container">CONTROL PANEL</h2>
+                <p class="text-on-surface-variant font-label-caps text-[10px]">V2.4 ACTIVE</p>
+            </div>
+            <div class="text-[10px] text-on-surface-variant font-label-caps mb-1 px-1">SELECIONAR LANCE</div>
+            <nav id="lance-list" class="flex-1 space-y-1 overflow-y-auto">
+                <div class="text-on-surface-variant font-label-caps text-[10px] px-3 py-2 animate-pulse">Carregando lances...</div>
+            </nav>
+            <div class="pt-4 border-t border-outline-variant">
+                <div class="glass-panel p-3 rounded-lg border border-outline-variant/50 space-y-2">
+                    <span class="block text-[10px] text-on-surface-variant font-label-caps">LEGENDA</span>
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-[#ff6b6b] border border-white/30"></div>
+                        <span class="text-[10px] text-on-surface-variant font-label-caps">TIME ATACANTE</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-[#60b4f7] border border-white/30"></div>
+                        <span class="text-[10px] text-on-surface-variant font-label-caps">TIME DEFENSOR</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-white border border-gray-400"></div>
+                        <span class="text-[10px] text-on-surface-variant font-label-caps">BOLA</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-4 h-0.5 border-t-2 border-dashed border-yellow-400"></div>
+                        <span class="text-[10px] text-on-surface-variant font-label-caps">LINHA VAR</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <!-- Main Content Canvas -->
+        <main class="flex-1 relative bg-surface-container-lowest flex flex-col p-6 gap-4 overflow-hidden">
+            <!-- VAR Button Bar -->
+            <div class="flex items-center justify-between gap-4 flex-shrink-0">
+                <div class="flex items-center gap-3">
+                    <span id="lance-title" class="font-label-caps text-label-caps text-on-surface-variant">Selecione um lance no painel lateral</span>
+                </div>
+                <button id="btn-var"
+                    class="px-6 py-2.5 bg-primary-container text-on-primary font-bold rounded-lg active:scale-95 transition-all shadow-[0_0_16px_rgba(57,255,20,0.5)] flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed font-label-caps text-label-caps"
+                    disabled>
+                    <span class="material-symbols-outlined text-sm">gavel</span>
+                    ANÁLISE VAR
+                </button>
+            </div>
+            <!-- Pitch Area -->
+            <div
+                class="flex-1 relative bg-pitch-green rounded-xl border border-outline-variant overflow-hidden pitch-pattern shadow-2xl min-h-0">
+                <!-- Pitch Markings (SVG Overlay) -->
+                <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-40" viewbox="0 0 800 500">
+                    <rect fill="none" height="500" stroke="white" stroke-width="2" width="800" x="0" y="0"></rect>
+                    <line stroke="white" stroke-width="2" x1="400" x2="400" y1="0" y2="500"></line>
+                    <circle cx="400" cy="250" fill="none" r="60" stroke="white" stroke-width="2"></circle>
+                    <!-- Penalty Areas -->
+                    <rect fill="none" height="250" stroke="white" stroke-width="2" width="120" x="0" y="125"></rect>
+                    <rect fill="none" height="250" stroke="white" stroke-width="2" width="120" x="680" y="125"></rect>
+                </svg>
+                <!-- Dynamic VAR Overlay SVG -->
+                <svg id="var-overlay" class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 800 500">
+                    <!-- Offside line (drawn by JS) -->
+                    <line id="offside-line" x1="0" x2="0" y1="0" y2="0" stroke="#facc15" stroke-width="2.5" stroke-dasharray="8 5" opacity="0"/>
+                    <!-- Players group (drawn by JS) -->
+                    <g id="players-group"></g>
+                    <!-- Ball drawn LAST so it's always on top -->
+                    <!-- Copa 2026 ball (Adidas Trionda style) centered at 0,0 r=9 -->
+                    <g id="ball-marker" opacity="0" transform="translate(-500,-500)">
+                        <!-- Base branca -->
+                        <circle cx="0" cy="0" r="9" fill="white"/>
+                        <!-- Painel azul (direita / superior-direita) -->
+                        <path d="M 2,-8.8 C 5.5,-7 8.5,-3.5 9,1 C 7,1.5 4,0.5 2,-8.8 Z" fill="#1565C0"/>
+                        <path d="M 9,1 C 8.5,4.5 7,7 4.5,8 C 3,6 4,3 9,1 Z" fill="#1976D2"/>
+                        <!-- Painel vermelho escuro (superior-esquerdo) -->
+                        <path d="M -4,-8 C -1,-9 2,-8.8 2,-8.8 C 0,-6 -2,-5 -4,-8 Z" fill="#7B1010"/>
+                        <path d="M -8,-4 C -7,-7 -5,-8 -4,-8 C -4,-5 -5,-2 -8,-4 Z" fill="#C62828"/>
+                        <!-- Painel verde escuro (inferior-esquerdo) -->
+                        <path d="M -9,2 C -8.5,-1 -8,-3 -8,-4 C -5,-2 -4,2 -6,6 Z" fill="#1B5E20"/>
+                        <path d="M -6,6 C -4,8 -1,9 2,8.5 C 1,6 -2,5 -6,6 Z" fill="#2E7D32"/>
+                        <!-- Costuras / seams -->
+                        <path d="M 2,-8.8 C 0,-5 -1,-1 -2,2" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="0.6"/>
+                        <path d="M -2,2 C 0,5 2,7 4.5,8" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="0.6"/>
+                        <path d="M 9,1 C 5,2 2,2 -2,2" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="0.4"/>
+                        <path d="M -8,-4 C -5,-3 -3,0 -2,2" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="0.4"/>
+                        <!-- Estrela dourada -->
+                        <text x="3.5" y="-3.5" font-size="3.5" fill="#FFD700" font-family="serif" text-anchor="middle">&#9733;</text>
+                        <!-- Reflexo/highlight -->
+                        <ellipse cx="-1.5" cy="-5.5" rx="2.2" ry="1.2" fill="rgba(255,255,255,0.55)" transform="rotate(-30,-1.5,-5.5)"/>
+                        <!-- Contorno externo sutil -->
+                        <circle cx="0" cy="0" r="9" fill="none" stroke="rgba(0,0,0,0.18)" stroke-width="0.5"/>
+                        <animate attributeName="opacity" values="1;0.85;1" dur="1.2s" repeatCount="indefinite"/>
+                    </g>
+                </svg>
+                <!-- Player markers container (legacy removed) -->
+                <!-- VAR Status Banner (dynamic) -->
+                <div id="var-banner"
+                    class="absolute top-6 left-1/2 -translate-x-1/2 glass-panel px-6 py-3 rounded-full items-center gap-4 border border-outline-variant/50 hidden">
+                    <div class="flex items-center gap-2">
+                        <div id="var-dot" class="w-2 h-2 rounded-full bg-primary-container animate-ping"></div>
+                        <span id="var-status" class="font-label-caps text-primary-container text-label-caps font-bold">—</span>
+                    </div>
+                    <div class="h-4 w-[1px] bg-outline-variant"></div>
+                    <div class="flex flex-col">
+                        <span id="var-detail-label" class="text-[10px] text-on-surface-variant font-label-caps uppercase">Jogadores</span>
+                        <span id="var-detail-value" class="font-metric-xl text-lg text-primary-container tracking-tight">—</span>
+                    </div>
+                </div>
+                <!-- Camera Selector Bar -->
+                <div class="absolute bottom-3 right-3 glass-panel px-3 py-2 rounded-lg flex items-center gap-2 border border-outline-variant/40">
+                    <span class="material-symbols-outlined text-on-surface-variant text-sm">videocam</span>
+                    <span class="font-label-caps text-[10px] text-on-surface-variant">CÂMERA:</span>
+                    <button id="cam-top" onclick="setCamera('top')" class="font-label-caps text-[10px] px-2 py-0.5 rounded bg-primary-container text-on-primary transition-all">TOPO</button>
+                    <button id="cam-side" onclick="setCamera('side')" class="font-label-caps text-[10px] px-2 py-0.5 rounded text-on-surface-variant hover:bg-surface-variant transition-all">LATERAL</button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <!-- VAR Logic Script -->
+    <script>
+        // ---- checkOffside: portado de solucao.js ----
+        function checkOffside(play) {
+            const { attackingTeam, ball, field, players } = play;
+            const halfFieldX = field.length / 2;
+            const defenders = players.filter(p => p.team !== attackingTeam);
+            const attackers = players.filter(p => p.team === attackingTeam);
+            const sortedDefenders = [...defenders].sort((a, b) => a.x - b.x);
+            const offsideLineDefender = sortedDefenders[sortedDefenders.length - 2];
+            const offsideLineX = offsideLineDefender.x;
+            const offsidePlayers = attackers
+                .filter(a => a.x > offsideLineX && a.x > ball.x && a.x > halfFieldX)
+                .map(a => a.id);
+            return {
+                hasOffside: offsidePlayers.length > 0,
+                offsidePlayers,
+                offsideLineDefender: offsideLineDefender.id
+            };
+        }
+
+        // ---- Conversão de coordenadas campo → SVG ----
+        // Campo real: 105m (comprimento) × 68m (largura)
+        // SVG canvas: 800px × 500px
+        const FIELD_W = 105, FIELD_H = 68;
+        const SVG_W = 800, SVG_H = 500;
+        function toSvgX(x) { return (x / FIELD_W) * SVG_W; }
+        function toSvgY(y) { return (y / FIELD_H) * SVG_H; }
+
+        // ---- Estado da câmera ----
+        let currentCamera = 'top';
+
+        // ---- Estado da aplicação ----
+        let currentPlay = null;
+        let lastResult = null;
+
+        // ---- Cores de alto contraste ----
+        // Atacantes: coral/salmão vibrante | Defensores: azul claro
+        const COLOR_ATTACKER      = '#ff6b6b';
+        const COLOR_ATTACKER_GK   = '#ff9800';
+        const COLOR_DEFENDER      = '#60b4f7';
+        const COLOR_DEFENDER_GK   = '#b388ff';
+        const COLOR_ATTACKER_TEXT = '#1a0000';
+        const COLOR_DEFENDER_TEXT = '#001529';
+
+        // ---- Renderizar jogadores e bola no SVG (visão de cima) ----
+        function renderTopView(play) {
+            const group = document.getElementById('players-group');
+            const ballMarker = document.getElementById('ball-marker');
+            group.innerHTML = '';
+
+            hideLine();
+            hideBanner();
+
+            // Jogadores
+            play.players.forEach(p => {
+                const svgX = toSvgX(p.x);
+                const svgY = toSvgY(p.y);
+                const isAttacker = p.team === play.attackingTeam;
+                const isGK = p.goalkeeper === true;
+                const number = p.id.replace(/[A-Za-z]/g, '');
+
+                const fill  = isAttacker ? (isGK ? COLOR_ATTACKER_GK : COLOR_ATTACKER)
+                                         : (isGK ? COLOR_DEFENDER_GK : COLOR_DEFENDER);
+                const tFill = isAttacker ? COLOR_ATTACKER_TEXT : COLOR_DEFENDER_TEXT;
+
+                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle.setAttribute('cx', svgX);
+                circle.setAttribute('cy', svgY);
+                circle.setAttribute('r', '14');
+                circle.setAttribute('id', `player-${p.id}`);
+                circle.setAttribute('fill', fill);
+                circle.setAttribute('stroke', 'white');
+                circle.setAttribute('stroke-width', isGK ? '3' : '1.5');
+                if (isGK) circle.setAttribute('stroke-dasharray', '4 2');
+
+                const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                text.setAttribute('x', svgX);
+                text.setAttribute('y', svgY + 4);
+                text.setAttribute('text-anchor', 'middle');
+                text.setAttribute('font-size', '10');
+                text.setAttribute('font-family', 'JetBrains Mono');
+                text.setAttribute('font-weight', '700');
+                text.setAttribute('fill', tFill);
+                text.setAttribute('pointer-events', 'none');
+                text.textContent = number;
+
+                group.appendChild(circle);
+                group.appendChild(text);
+            });
+
+            // Bola por último (sempre visível acima dos jogadores)
+            ballMarker.setAttribute('transform', `translate(${toSvgX(play.ball.x)},${toSvgY(play.ball.y)})`);
+            ballMarker.setAttribute('opacity', '1');
+        }
+
+        // ---- Visão perspectiva isométrica ----
+        function renderSideView(play) {
+            const NS = 'http://www.w3.org/2000/svg';
+            const group = document.getElementById('players-group');
+            const ballMarker = document.getElementById('ball-marker');
+            group.innerHTML = '';
+            hideLine();
+            hideBanner();
+            ballMarker.setAttribute('opacity', '0');
+
+            // ---- Projeção perspectiva ----
+            // Campo: x=0-105 (esq→dir), y=0-68 (frente→fundo)
+            // Vista do canto frontal-esquerdo, como na imagem de referência
+            const BL = {x: 30,  y: 475}; // (0,  0 ) – canto próximo-esquerdo
+            const BR = {x: 770, y: 475}; // (105,0 ) – canto próximo-direito
+            const TL = {x: 130, y: 75};  // (0,  68) – canto longe-esquerdo
+            const TR = {x: 670, y: 75};  // (105,68) – canto longe-direito
+
+            function proj(fx, fy) {
+                const tx = fx / 105, ty = fy / 68;
+                return {
+                    x: (1-tx)*(1-ty)*BL.x + tx*(1-ty)*BR.x + (1-tx)*ty*TL.x + tx*ty*TR.x,
+                    y: (1-tx)*(1-ty)*BL.y + tx*(1-ty)*BR.y + (1-tx)*ty*TL.y + tx*ty*TR.y
+                };
+            }
+            function pScale(fy) { return 1.35 - (fy / 68) * 0.65; }
+
+            function el(tag, attrs) {
+                const e = document.createElementNS(NS, tag);
+                for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+                return e;
+            }
+            function poly(pts, fill, stroke, sw) {
+                return el('polygon', {
+                    points: pts.map(p => `${p.x},${p.y}`).join(' '),
+                    fill: fill || 'none',
+                    stroke: stroke || 'none',
+                    'stroke-width': sw || 0
+                });
+            }
+
+            // Fundo (área ao redor do campo)
+            group.appendChild(el('rect', {x:0,y:0,width:800,height:500,fill:'#5ab55f'}));
+
+            // Faixas alternadas do campo em perspectiva
+            const numStripes = 10;
+            const stripeA = '#3d8c45', stripeB = '#4aa055';
+            for (let i = 0; i < numStripes; i++) {
+                const x1 = (i / numStripes) * 105;
+                const x2 = ((i+1) / numStripes) * 105;
+                group.appendChild(poly(
+                    [proj(x1,0), proj(x2,0), proj(x2,68), proj(x1,68)],
+                    i % 2 === 0 ? stripeA : stripeB
+                ));
+            }
+
+            // Borda do campo
+            group.appendChild(poly([proj(0,0),proj(105,0),proj(105,68),proj(0,68)],
+                'none', 'white', 2));
+
+            function fieldLine(fx1,fy1,fx2,fy2,w,color,dash) {
+                const p1=proj(fx1,fy1), p2=proj(fx2,fy2);
+                const ln = el('line',{x1:p1.x,y1:p1.y,x2:p2.x,y2:p2.y,
+                    stroke:color||'white','stroke-width':w||1.5,
+                    'stroke-linecap':'round'});
+                if(dash) ln.setAttribute('stroke-dasharray',dash);
+                return ln;
+            }
+            function fieldRect(fx1,fy1,fx2,fy2,fill,stroke,sw) {
+                return poly([proj(fx1,fy1),proj(fx2,fy1),proj(fx2,fy2),proj(fx1,fy2)],
+                    fill||'none', stroke||'white', sw||1.5);
+            }
+
+            // Linha de meio-campo
+            group.appendChild(fieldLine(52.5,0,52.5,68,1.5));
+
+            // Áreas de penalty
+            group.appendChild(fieldRect(0,13.85,16.5,54.15));    // esquerda
+            group.appendChild(fieldRect(88.5,13.85,105,54.15));  // direita
+
+            // Pequenas áreas
+            group.appendChild(fieldRect(0,24.85,5.5,43.15));
+            group.appendChild(fieldRect(99.5,24.85,105,43.15));
+
+            // Círculo central (aproximado com polígono de 32 lados)
+            const circPts = [];
+            for(let i=0;i<32;i++){
+                const a = (i/32)*Math.PI*2;
+                circPts.push(proj(52.5 + Math.cos(a)*9.15, 34 + Math.sin(a)*9.15*68/105));
+            }
+            group.appendChild(poly(circPts,'none','white',1.5));
+
+            // Traves / goals
+            function drawGoal(isLeft) {
+                const gx = isLeft ? 0 : 105;
+                const depth = isLeft ? -3.5 : 3.5;
+                const gy1 = 30.34, gy2 = 37.66;
+                // Posts verticais
+                group.appendChild(fieldLine(gx,gy1,gx+depth,gy1,2.5,'rgba(255,255,255,0.9)'));
+                group.appendChild(fieldLine(gx,gy2,gx+depth,gy2,2.5,'rgba(255,255,255,0.9)'));
+                // Trave horizontal (fundo)
+                group.appendChild(fieldLine(gx+depth,gy1,gx+depth,gy2,2,'rgba(255,255,255,0.7)'));
+                // Linha da baliza
+                group.appendChild(fieldLine(gx,gy1,gx,gy2,3,'white'));
+            }
+            drawGoal(true);
+            drawGoal(false);
+
+            // Linha VAR de impedimento
+            if (lastResult) {
+                const def = play.players.find(p => p.id === lastResult.offsideLineDefender);
+                if (def) {
+                    group.appendChild(fieldLine(def.x,0,def.x,68,3,'#facc15','10 6'));
+                    // Label VAR
+                    const lp = proj(def.x, 0);
+                    const lbl = el('text',{
+                        x:lp.x, y:lp.y+18,
+                        'text-anchor':'middle','font-size':'10',
+                        'font-family':'JetBrains Mono','font-weight':'700',
+                        fill:'#facc15','paint-order':'stroke',
+                        stroke:'rgba(0,0,0,0.6)','stroke-width':'3'
+                    });
+                    lbl.textContent='LINHA VAR';
+                    group.appendChild(lbl);
+                }
+            }
+
+            // ---- Silhueta de jogador (perspectiva) ----
+            function drawFigure(parent, cx, cy, sc, vestColor, isOffside) {
+                const g = el('g',{transform:`translate(${cx},${cy}) scale(${sc})`});
+                if(isOffside) g.setAttribute('filter','url(#offside-glow)');
+
+                // Sombra elíptica no chão
+                g.appendChild(el('ellipse',{cx:3,cy:5,rx:11,ry:4,fill:'rgba(0,0,0,0.3)'}));
+
+                const BC = '#1e2d40'; // cor corpo escura
+
+                // Perna traseira (esq – para trás)
+                const legBck = el('path',{
+                    d:'M -1,0 C -3,8 -8,14 -9,22 C -9,25 -5,26 -3,23 C -1,18 2,10 1,0 Z',
+                    fill:BC
+                });
+                g.appendChild(legBck);
+
+                // Corpo
+                const body = el('path',{
+                    d:'M -7,-22 C -9,-18 -9,-8 -7,0 L 7,0 C 9,-8 9,-18 7,-22 Z',
+                    fill:BC
+                });
+                g.appendChild(body);
+
+                // Colete colorido
+                const vest = el('path',{
+                    d:'M -6,-21 C -8,-17 -8,-8 -6,-1 L 6,-1 C 8,-8 8,-17 6,-21 Z',
+                    fill: vestColor, opacity:'0.92'
+                });
+                g.appendChild(vest);
+
+                // Perna dianteira (dir – na frente)
+                const legFwd = el('path',{
+                    d:'M 1,0 C 4,8 10,14 11,22 C 12,26 7,27 5,24 C 3,18 -1,10 -1,0 Z',
+                    fill:BC
+                });
+                g.appendChild(legFwd);
+
+                // Braço traseiro
+                const armBck = el('path',{
+                    d:'M -7,-18 C -12,-14 -17,-8 -18,-2 C -17,0 -14,-1 -13,-5 C -10,-10 -6,-15 -5,-18 Z',
+                    fill:BC
+                });
+                g.appendChild(armBck);
+
+                // Braço dianteiro
+                const armFwd = el('path',{
+                    d:'M 7,-18 C 12,-12 16,-5 16,2 C 15,4 12,3 11,0 C 9,-5 6,-12 5,-18 Z',
+                    fill:BC
+                });
+                g.appendChild(armFwd);
+
+                // Pescoço + cabeça
+                g.appendChild(el('rect',{x:-3,y:-30,width:6,height:8,fill:BC,rx:2}));
+                g.appendChild(el('circle',{cx:1,cy:-37,r:9,fill:BC}));
+
+                parent.appendChild(g);
+            }
+
+            // Filtro de brilho vermelho para impedidos
+            const defs = el('defs',{});
+            const filter = el('filter',{id:'offside-glow',x:'-30%',y:'-30%',width:'160%',height:'160%'});
+            const feFlood = el('feFlood',{'flood-color':'#ff3333','flood-opacity':'0.7',result:'flood'});
+            const feComposite = el('feComposite',{in:'flood',in2:'SourceGraphic',operator:'in',result:'colored'});
+            const feMerge = el('feMerge',{});
+            const feMerge1 = el('feMergeNode',{in:'colored'});
+            const feMerge2 = el('feMergeNode',{in:'SourceGraphic'});
+            const feBlur = el('feGaussianBlur',{in:'colored','stdDeviation':'4',result:'blurred'});
+            const feMerge3 = el('feMerge',{});
+            feMerge3.appendChild(el('feMergeNode',{in:'blurred'}));
+            feMerge3.appendChild(el('feMergeNode',{in:'SourceGraphic'}));
+            filter.appendChild(feBlur);
+            filter.appendChild(feMerge3);
+            defs.appendChild(filter);
+            group.appendChild(defs);
+
+            // Jogadores ordenados por fy descrescente (fundo primeiro → sobreposição correta)
+            const sorted = [...play.players].sort((a, b) => b.y - a.y);
+            sorted.forEach(p => {
+                const pos = proj(p.x, p.y);
+                const sc  = pScale(p.y);
+                const isAttacker = p.team === play.attackingTeam;
+                const isGK = p.goalkeeper === true;
+                const isOffside = lastResult && lastResult.offsidePlayers.includes(p.id);
+                const vest = isOffside ? '#FF4B4B'
+                           : isAttacker ? (isGK ? COLOR_ATTACKER_GK : COLOR_ATTACKER)
+                                        : (isGK ? COLOR_DEFENDER_GK : COLOR_DEFENDER);
+                const fg = el('g',{id:`player-${p.id}`});
+                drawFigure(fg, pos.x, pos.y, sc, vest, isOffside);
+                group.appendChild(fg);
+            });
+
+            // Bola em perspectiva
+            const bp = proj(play.ball.x, play.ball.y);
+            const bs = pScale(play.ball.y);
+            // Sombra da bola
+            group.appendChild(el('ellipse',{cx:bp.x+2,cy:bp.y+5,rx:bs*8,ry:bs*3,fill:'rgba(0,0,0,0.25)'}));
+            ballMarker.setAttribute('transform', `translate(${bp.x},${bp.y - bs * 5}) scale(${bs})`);
+            ballMarker.setAttribute('opacity', '1');
+        }
+
+
+        // ---- renderPlay despacha para a câmera correta ----
+        function renderPlay(play) {
+            if (currentCamera === 'side') {
+                renderSideView(play);
+            } else {
+                renderTopView(play);
+            }
+        }
+
+        // ---- Desenhar linha de impedimento ----
+        function drawOffsideLine(play, defenderX) {
+            const svgX = toSvgX(defenderX);
+            const line = document.getElementById('offside-line');
+            line.setAttribute('x1', svgX);
+            line.setAttribute('x2', svgX);
+            line.setAttribute('y1', 0);
+            line.setAttribute('y2', SVG_H);
+            line.setAttribute('opacity', '1');
+        }
+
+        function hideLine() {
+            const line = document.getElementById('offside-line');
+            line.setAttribute('opacity', '0');
+        }
+
+        // ---- Destacar jogadores impedidos ----
+        function highlightOffsidePlayers(offsidePlayers) {
+            offsidePlayers.forEach(id => {
+                const circle = document.getElementById(`player-${id}`);
+                if (circle) {
+                    circle.setAttribute('fill', '#FF4B4B');
+                    circle.setAttribute('stroke', '#ff0000');
+                    circle.setAttribute('stroke-width', '3');
+                    circle.style.filter = 'drop-shadow(0 0 8px rgba(255,75,75,0.9))';
+                }
+            });
+        }
+
+        // ---- Mostrar/ocultar banner VAR ----
+        function showBanner(result, play) {
+            const banner = document.getElementById('var-banner');
+            const dot = document.getElementById('var-dot');
+            const status = document.getElementById('var-status');
+            const detailLabel = document.getElementById('var-detail-label');
+            const detailValue = document.getElementById('var-detail-value');
+
+            banner.classList.remove('hidden');
+            banner.classList.add('flex');
+
+            if (result.hasOffside) {
+                dot.classList.remove('bg-primary-container');
+                dot.classList.add('bg-red-500');
+                banner.classList.remove('border-outline-variant/50');
+                banner.classList.add('border-red-500/50');
+                status.textContent = '🚩 IMPEDIMENTO';
+                status.classList.remove('text-primary-container');
+                status.classList.add('text-red-400');
+                detailLabel.textContent = 'JOGADORES IMPEDIDOS';
+                detailValue.textContent = result.offsidePlayers.join(', ');
+                detailValue.classList.remove('text-primary-container');
+                detailValue.classList.add('text-red-400');
+            } else {
+                dot.classList.remove('bg-red-500');
+                dot.classList.add('bg-primary-container');
+                banner.classList.remove('border-red-500/50');
+                banner.classList.add('border-primary-container/50');
+                status.textContent = '✅ LANCE LEGAL';
+                status.classList.remove('text-red-400');
+                status.classList.add('text-primary-container');
+                detailLabel.textContent = 'LINHA DO DEFENSOR';
+                detailValue.textContent = result.offsideLineDefender;
+                detailValue.classList.remove('text-red-400');
+                detailValue.classList.add('text-primary-container');
+            }
+        }
+
+        function hideBanner() {
+            const banner = document.getElementById('var-banner');
+            banner.classList.add('hidden');
+            banner.classList.remove('flex');
+        }
+
+        // ---- Carregar lista de lances do index.json ----
+        async function loadLances() {
+            try {
+                const res = await fetch('index.json');
+                const index = await res.json();
+                const nav = document.getElementById('lance-list');
+                nav.innerHTML = '';
+
+                index.forEach((lance, i) => {
+                    const btn = document.createElement('button');
+                    btn.id = `lance-btn-${i}`;
+                    btn.className = 'w-full flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all font-label-caps text-label-caps text-left';
+                    btn.innerHTML = `<span class="material-symbols-outlined text-sm">sports_soccer</span><span class="truncate">${lance.nome}</span>`;
+                    btn.addEventListener('click', () => selectLance(lance, i, index.length));
+                    nav.appendChild(btn);
+                });
+
+                // Seleciona o primeiro lance automaticamente
+                if (index.length > 0) selectLance(index[0], 0, index.length);
+
+            } catch (e) {
+                document.getElementById('lance-list').innerHTML =
+                    '<p class="text-red-400 font-label-caps text-[10px] px-3">Abra pelo servidor local</p>';
+            }
+        }
+
+        // ---- Selecionar um lance ----
+        async function selectLance(lance, idx, total) {
+            // Atualiza estilo dos botões
+            for (let i = 0; i < total; i++) {
+                const btn = document.getElementById(`lance-btn-${i}`);
+                if (!btn) continue;
+                btn.className = 'w-full flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all font-label-caps text-label-caps text-left';
+            }
+            const activeBtn = document.getElementById(`lance-btn-${idx}`);
+            if (activeBtn) {
+                activeBtn.className = 'w-full flex items-center gap-3 px-3 py-2 bg-secondary-container text-on-secondary-container rounded-lg border-l-4 border-primary-container transition-all font-label-caps text-label-caps text-left';
+            }
+
+            // Carrega o arquivo do lance
+            const res = await fetch(lance.arquivo);
+            currentPlay = await res.json();
+            lastResult = null;
+
+            // Renderiza jogadores no campo
+            renderPlay(currentPlay);
+
+            // Atualiza o título do lance no topo
+            const titleEl = document.getElementById('lance-title');
+            if (titleEl) titleEl.textContent = lance.nome;
+
+            // Habilita o botão de análise
+            const btn = document.getElementById('btn-var');
+            btn.disabled = false;
+        }
+
+        // ---- Câmera: alterna entre topo e lateral ----
+        function setCamera(cam) {
+            currentCamera = cam;
+            const camTop = document.getElementById('cam-top');
+            const camSide = document.getElementById('cam-side');
+            const pitchMarkings = document.querySelector('svg.opacity-40');
+
+            if (cam === 'top') {
+                camTop.className = 'font-label-caps text-[10px] px-2 py-0.5 rounded bg-primary-container text-on-primary transition-all';
+                camSide.className = 'font-label-caps text-[10px] px-2 py-0.5 rounded text-on-surface-variant hover:bg-surface-variant transition-all';
+                if (pitchMarkings) pitchMarkings.style.display = '';
+            } else {
+                camSide.className = 'font-label-caps text-[10px] px-2 py-0.5 rounded bg-primary-container text-on-primary transition-all';
+                camTop.className = 'font-label-caps text-[10px] px-2 py-0.5 rounded text-on-surface-variant hover:bg-surface-variant transition-all';
+                if (pitchMarkings) pitchMarkings.style.display = 'none';
+            }
+
+            if (currentPlay) renderPlay(currentPlay);
+        }
+
+        // ---- Botão Análise VAR ----
+        document.getElementById('btn-var').addEventListener('click', () => {
+            if (!currentPlay) return;
+
+            lastResult = checkOffside(currentPlay);
+
+            // Redesenha jogadores limpos e depois aplica efeitos VAR
+            renderPlay(currentPlay);
+
+            // Encontra o defensor da linha para pegar o X
+            const defender = currentPlay.players.find(p => p.id === lastResult.offsideLineDefender);
+            if (defender) drawOffsideLine(currentPlay, defender.x);
+
+            if (lastResult.hasOffside) {
+                highlightOffsidePlayers(lastResult.offsidePlayers);
+            }
+
+            showBanner(lastResult, currentPlay);
+        });
+
+        // ---- Inicialização ----
+        loadLances();
+    </script>
+</body>
+
+</html>

@@ -1,66 +1,56 @@
-// ---- runner: roda os lances do index.json. Rode com: node solucao.js ----
-const fs = require("fs");
-const path = require("path");
+// ---- checkOffside: verifica impedimento em um lance ----
+function checkOffside(play) {
+  const { attackingTeam, ball, field, players } = play;
+  const halfFieldX = field.length / 2;
 
-const index = JSON.parse(fs.readFileSync(path.join(__dirname, "index.json"), "utf8"));
+  // Separa os jogadores por time
+  const defenders = players.filter((p) => p.team !== attackingTeam);
+  const attackers = players.filter((p) => p.team === attackingTeam);
 
-function listOfOffside(play) {
-  const { attackingTeam, passer } = play;
+  // Ordena os defensores pela posição X (crescente)
+  const sortedDefenders = [...defenders].sort((a, b) => a.x - b.x);
 
-  play.players = play.players.sort((i, j) => i.x - j.x);
+  // O penúltimo defensor define a linha de impedimento (2º mais perto da linha de fundo x=105)
+  const offsideLineDefender = sortedDefenders[sortedDefenders.length - 2];
+  const offsideLineX = offsideLineDefender.x;
 
-  let bPlayers = play.players.filter((player) => player.team === "B");
-  let aPlayers = play.players.filter((player) => player.team === "A");
+  // Identifica os atacantes em posição irregular
+  const offsidePlayers = attackers
+    .filter(
+      (a) =>
+        a.x > offsideLineX &&
+        a.x > ball.x &&
+        a.x > halfFieldX
+    )
+    .map((a) => a.id);
 
-  if (attackingTeam === "A") {
-    // find B
-    // console.log(`bPlayers`, bPlayers);
-    let lastPlayer = bPlayers[bPlayers.length - 2];
-    aPlayers = aPlayers.filter((a) => a.x > lastPlayer.x);
-
-    return {
-      hasOffside: aPlayers.length > 0,
-      offsidePlayers: aPlayers.map((i) => i.id), // ids dos atacantes em posição irregular
-      offsideLineDefender: lastPlayer.id, // id do defensor que define a linha
-    };
-    // console.log(`lineOfDeffense`, lineOfDeffense);
-    // let indice = play.players.findIndex((player) => player.id === lineOfDeffense.id);
-    // console.log(`indice`, indice);
-    // // players que estejam na frente do indice
-    // // jogador que está com o índice menor que a variável indice e seja do time A
-    // console.log(play.players.filter((jogador) => jogador.team === "A"));
-    // let aPlayers = play.players.filter((jogador) => jogador.team === "A");
-    // let aLastPlayer = aPlayers[aPlayers.length - 1];
-    // let aBeforeLastPlayer = aPlayers[aPlayers.length - 2];
-    // .findIndex((player) => player.id === lineOfDeffense.id)
-    // console.log("aLastPlayer", aLastPlayer);
-    // console.log("aBeforeLastPlayer", aBeforeLastPlayer);
-
-    //ordem por proximidade do gol
-
-    return {
-      hasOffside: false,
-      offsidePlayers: [], // ids dos atacantes em posição irregular
-      offsideLineDefender: null, // id do defensor que define a linha
-    };
-  }
-  // attacking team B
   return {
-    hasOffside: false,
-    offsidePlayers: [], // ids dos atacantes em posição irregular
-    offsideLineDefender: null, // id do defensor que define a linha
+    hasOffside: offsidePlayers.length > 0,
+    offsidePlayers,
+    offsideLineDefender: offsideLineDefender.id,
   };
 }
 
-function checkOffside(play) {
-  // os gols ficam no eixo X
+// ---- runner: roda os lances do index.json. Rode com: node solucao.js ----
+if (typeof require !== "undefined") {
+  const fs = require("fs");
+  const path = require("path");
 
-  return listOfOffside(play, play.attackingTeam);
+  const index = JSON.parse(
+    fs.readFileSync(path.join(__dirname, "index.json"), "utf8")
+  );
+
+  for (const { nome, arquivo } of index) {
+    const play = JSON.parse(
+      fs.readFileSync(path.join(__dirname, arquivo), "utf8")
+    );
+    console.log(`--- ${nome} ---`);
+    console.log(checkOffside(play));
+    console.log("");
+  }
 }
 
-for (const { nome, arquivo } of index) {
-  const play = JSON.parse(fs.readFileSync(path.join(__dirname, arquivo), "utf8"));
-  console.log(nome);
-  console.log(checkOffside(play));
-  console.log("");
+// Exporta para uso no navegador (index.html)
+if (typeof module !== "undefined") {
+  module.exports = { checkOffside };
 }
